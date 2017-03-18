@@ -42,6 +42,7 @@
 		
 		<beans:property name="annotatedClasses">
 			<beans:list>
+				<beans:value>br.com.mmartini.model.Cliente</beans:value>
 				<beans:value>br.com.mmartini.model.Produto</beans:value>
 			</beans:list>
 		</beans:property>
@@ -56,8 +57,16 @@
 		
 	</beans:bean>
 	
+	<beans:bean id="clienteDAO" class="br.com.mmartini.dao.ClienteDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+
 	<beans:bean id="produtoDAO" class="br.com.mmartini.dao.ProdutoDAOImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+
+	<beans:bean id="clienteService" class="br.com.mmartini.service.ClienteServiceImpl">
+		<beans:property name="clienteDAO" ref="clienteDAO"></beans:property>
 	</beans:bean>
 
 	<beans:bean id="produtoService" class="br.com.mmartini.service.ProdutoServiceImpl">
