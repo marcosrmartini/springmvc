@@ -1,5 +1,10 @@
 package br.com.mmartini.dao;
 
-public class ClienteDAOImpl<Cliente> extends BaseDAOImpl{
+import org.springframework.stereotype.Repository;
+
+import br.com.mmartini.model.Cliente;
+
+@Repository
+public class ClienteDAOImpl extends BaseDAOImpl<Cliente> {
 
 }

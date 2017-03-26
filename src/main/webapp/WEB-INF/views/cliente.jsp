@@ -5,7 +5,7 @@
 <html>
 <head>
 	
-	<title>Pagina de Produtos</title>
+	<title>Pagina de Clientes</title>
 	
 	  <link href="<c:url value="/resources/bootstrap-3.3.7-dist/css/bootstrap.min.css" />" rel="stylesheet">
 	  <link href="<c:url value="/resources/bootstrap-3.3.7-dist/css/bootstrap.theme.min.css" />" rel="stylesheet">
@@ -14,14 +14,14 @@
 </head>
 <body>
 <h1>
-	Adiciona Produto
+	Adiciona Cliente
 </h1>
 
 <c:url var="adicionaAction" value="/produto/adiciona" ></c:url>
 
-<form:form action="${adicionaAction}" commandName="produto">
+<form:form action="${adicionaAction}" commandName="cliente">
 <table class="table table-hover table-inverse">
-	<c:if test="${!empty produto.descricao}">
+	<c:if test="${!empty cliente.nome}">
 	<tr>
 		<td>
 			<form:label path="id">
@@ -36,34 +36,36 @@
 	</c:if>
 	<tr>
 		<td>
-			<form:label path="descricao">
-				<spring:message text="Descrição"/>
+			<form:label path="nome">
+				<spring:message text="Nome"/>
 			</form:label>
 		</td>
 		<td>
-			<form:input path="descricao" />
+			<form:input path="nome" />
 		</td> 
 	</tr>
 	
+	
+	
 	<tr>
 		<td>
-			<form:label path="valor">
-				<spring:message text="Valor"/>
+			<form:label path="cpf">
+				<spring:message text="CPF"/>
 			</form:label>
 		</td>
 		<td>
-			<form:input path="valor" />
+			<form:input path="cpf" />
 		</td>
 	</tr>
 	<tr>
 		<td colspan="2">
-			<c:if test="${!empty produto.descricao}">
+			<c:if test="${!empty cliente.nome}">
 				<input type="submit" class="btn btn-primary"
-					value="<spring:message text="Alterar produto"/>" />
+					value="<spring:message text="Alterar cliente"/>" />
 			</c:if>
-			<c:if test="${empty produto.descricao}">
+			<c:if test="${empty cliente.nome}">
 				<input type="submit" class="btn btn-primary"
-					value="<spring:message text="Adicionar produto"/>" />
+					value="<spring:message text="Adicionar cliente"/>" />
 			</c:if>
 		</td>
 	</tr>
@@ -71,26 +73,25 @@
 </form:form>
 <br>
 <h3>Lista de Produtos</h3>
-<c:if test="${!empty listProdutos}">
+<c:if test="${!empty listClientes}">
 	<table class="table table-hover table-inverse">
 	<tr>
-		<th width="80">Produto ID</th>
-		<th width="120">Produto Descricao</th>
-		<th width="120">Produto Valor</th>
-		<th width="60">Edit</th>
-		<th width="60">Delete</th>
+		<th width="80">Cliente ID</th>
+		<th width="120">Cliente Nome</th>
+		<th width="120">Cliente CPF</th>
+		<th width="60">Editar</th>
+		<th width="60">Deletar</th>
 	</tr>
-	<c:forEach items="${listProdutos}" var="produto">
+	<c:forEach items="${listClientes}" var="cliente">
 		<tr>
-			<td>${produto.id}</td>
-			<td>${produto.descricao}</td>
-			<td>${produto.valor}</td>
-			<td><a href="<c:url value='/alteraProduto/${produto.id}' />" >Alterar</a></td>
-			<td><a href="<c:url value='/removeProduto/${produto.id}' />" >Remover</a></td>
+			<td>${cliente.id}</td>
+			<td>${cliente.nome}</td>
+			<td>${cliente.cpf}</td>
+			<td><a href="<c:url value='/alteraCliente/${cliente.id}' />" >Alterar</a></td>
+			<td><a href="<c:url value='/removeCliente/${cliente.id}' />" >Remover</a></td>
 		</tr>
 	</c:forEach>
 	</table>
 </c:if>
 </body>
 </html>
-

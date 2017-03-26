@@ -7,11 +7,7 @@ import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.GenericTypeResolver;
-import org.springframework.stereotype.Repository;
 
-import br.com.mmartini.model.Produto;
-
-@Repository
 public class BaseDAOImpl<T> implements BaseDAO {
 	
 //	Descobre de qual classe o generic foi instanciado
